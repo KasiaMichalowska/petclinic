@@ -2,31 +2,13 @@ package pageobject.page;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 public class OwnerPage {
 
-    @FindBy(linkText = "ownerName")
-    private WebElement ownerNameFieldElement;
+    @FindBy(how = How.XPATH, xpath = "//div[@id='main-navbar']/ul/li[3]/a/span[2]")
+    private WebElement findOwnerTab;
 
-    @FindBy(name = "findOwnerButton")
-    private WebElement findOwnerButton;
-
-    @FindBy(name = "AddOwnerButton")
-    private WebElement AddOwnerButton;
-
-
-/* //a[@href='/owners/1'] - owner */
-
-    @FindBy(linkText = "Home")
-    private WebElement homeLinkElement;
-
-    public void clickOnHomeLink() { homeLinkElement.click(); }
-
-    public void clickonfindOwnerButton() {findOwnerButton.click(); }
-
-    public void ckickonAddOwnerButton() { AddOwnerButton.click(); }
-
-    public void clickOnOwnerNameFieldElement() { ownerNameFieldElement.click(); }
+    /** To make sure we're on find owner starting page, navigate there before each search */
+    protected void navigateToSearchOwnerPage() { findOwnerTab.click(); }
 }
-
-
